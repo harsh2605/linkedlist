@@ -356,19 +356,19 @@ void merge_linkedlist(struct node *first, struct node *second)
         }
         else
         {
-            last->next=second;
-            last=second;
-            second=second->next;
-            last->next=NULL;
+            last->next = second;
+            last = second;
+            second = second->next;
+            last->next = NULL;
         }
     }
-    if(first!=NULL)
+    if (first != NULL)
     {
-        last->next=first;
+        last->next = first;
     }
     else
     {
-        last->next=second;
+        last->next = second;
     }
 }
 int main()
@@ -382,7 +382,7 @@ int main()
     printf("the elements in a linked list are:");
     display(head);
     printf("\n");
-    /* count(head);
+    count(head);
     printf("\n");
     sum(head);
     printf("\n");
@@ -426,13 +426,13 @@ int main()
     printf("\n");
     reverse_link(head);
     display(head);
-    rec_reverse(NULL,head);
+    rec_reverse(NULL, head);
     display(head);
     deleteAlt(head);
     display(head);
-    middle(head,18);
+    middle(head, 18);
     display(head);
-    printf("%d",modular(head,2));*/
+    printf("%d", modular(head, 2));
     for (int i = 0; i < 5; i++)
     {
         create2();
@@ -441,6 +441,6 @@ int main()
     display(head2);
     printf("\n");
     printf("the merged linked list in sorted order is:");
-    merge_linkedlist(head,head2);
+    merge_linkedlist(head, head2);
     display(third);
 }
