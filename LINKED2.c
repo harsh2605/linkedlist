@@ -26,7 +26,7 @@ void create()
         temp = newnode;
     }
 }
-void create2()
+void create2() //this is created for the merging purpose
 {
     struct node *newnode;
     newnode = (struct node *)malloc(sizeof(struct node));
@@ -45,7 +45,37 @@ void create2()
         temp1 = newnode;
     }
 }
-void display(struct node *temp)
+void create3() //creating a linkedlist for circular linkedlist
+{
+    struct node *newnode;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    //head = 0;
+    printf("enter the data:");
+    scanf("%d", &newnode->data);
+    newnode->next = 0;
+    if (head == 0)
+    {
+        head = newnode;
+        temp = newnode;
+    }
+    else
+    {
+        temp->next = newnode;
+        temp = newnode;
+    }
+    temp->next = head;
+}
+void display_circular(struct node *p) //displaying the elements of circular queue
+{
+    int flag = 0;
+    printf("the elements of the circular queue are:");
+    do
+    {
+        printf("%d ", p->data);
+        p = p->next;
+    } while (p != head);
+}
+void display(struct node *temp) //display elements of the linkedlist
 {
     //temp = head;
     if (temp != 0)
@@ -55,7 +85,7 @@ void display(struct node *temp)
         display(temp->next);
     }
 }
-void count(struct node *p)
+void count(struct node *p) //count number of nodes in the linkedlist
 {
     int count1;
     while (p != 0)
@@ -65,7 +95,7 @@ void count(struct node *p)
     }
     printf("the number of nodes are: %d", count1);
 }
-int sum(struct node *m)
+int sum(struct node *m) //sum of all the elements of the linkedlist
 {
     int sum = 0;
     while (m != 0)
@@ -75,7 +105,7 @@ int sum(struct node *m)
     }
     printf("the sum of all the elements in an linkedlist is:%d", sum);
 }
-int maxele(struct node *s)
+int maxele(struct node *s) //finding the maximum element in the linkedlist
 {
     int temp1 = s->data;
     while (s != 0)
@@ -92,7 +122,7 @@ int maxele(struct node *s)
     }
     printf("the maximum element in a linkedlist is:%d", temp1);
 }
-int binary(struct node *g, int ele)
+int binary(struct node *g, int ele) //searching an element in linkedlist
 {
     int count = 0;
     while (g != 0)
@@ -330,7 +360,7 @@ int modular(struct node *head, int k) //it is return the number which satisfies 
     }
     return res;
 }
-void merge_linkedlist(struct node *first, struct node *second)
+void merge_linkedlist(struct node *first, struct node *second) //code to merge two linkedlist in sorted order
 {
     struct node *last;
     if (first->data < second->data)
@@ -375,14 +405,14 @@ int main()
 
 {
     int element, pos, extra;
-    for (int i = 0; i < 5; i++)
+    /* for (int i = 0; i < 5; i++)
     {
         create();
     }
     printf("the elements in a linked list are:");
     display(head);
-    printf("\n");
-    count(head);
+    printf("\n");*/
+    /* count(head);
     printf("\n");
     sum(head);
     printf("\n");
@@ -426,14 +456,14 @@ int main()
     printf("\n");
     reverse_link(head);
     display(head);
-    rec_reverse(NULL, head);
+    rec_reverse(NULL,head);
     display(head);
     deleteAlt(head);
     display(head);
-    middle(head, 18);
+    middle(head,18);
     display(head);
-    printf("%d", modular(head, 2));
-    for (int i = 0; i < 5; i++)
+    printf("%d",modular(head,2));*/
+    /*for (int i = 0; i < 5; i++)
     {
         create2();
     }
@@ -442,5 +472,8 @@ int main()
     printf("\n");
     printf("the merged linked list in sorted order is:");
     merge_linkedlist(head, head2);
-    display(third);
+    display(third);*/
+    for (int i = 0; i < 5; i++)
+        create3();
+    display_circular(head);
 }
