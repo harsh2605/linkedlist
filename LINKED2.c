@@ -401,10 +401,72 @@ void merge_linkedlist(struct node *first, struct node *second) //code to merge t
         last->next = second;
     }
 }
+void delete_middle(struct node *p)
+{
+    struct node *q;
+    // p=head;
+    q = NULL;
+    int count = 0;
+    while (p != 0)
+    {
+        count++;
+        p = p->next;
+    }
+    p = head;
+    int pos;
+    pos = count / 2;
+    for (int i = 0; i < pos; i++)
+    {
+        q = p;
+        p = p->next;
+    }
+    q->next = p->next;
+    free(p);
+}
+int delete_circular(int pos)
+{
+    int x;
+    struct node *q, *p;
+    if (pos == 1)
+    {
+        p = head;
+        while (p->next != head)
+        {
+            p = p->next;
+        }
+        if (p == head)
+        {
+            x = head->data;
+            free(head);
+            head = NULL;
+        }
+        else
+        {
+            p->next = head->next;
+            x = head->data;
+            free(head);
+            head = p->next;
+        }
+        return x;
+    }
+    else
+    {
+        p = head;
+        for (int i = 0; i < pos - 2; i++)
+        {
+            p = p->next;
+        }
+        q = p->next;
+        p->next = q->next;
+        x = q->data;
+        free(q);
+        return x;
+    }
+}
 int main()
 
 {
-    int element, pos, extra;
+    int element, pos, extra, circular_pos;
     /* for (int i = 0; i < 5; i++)
     {
         create();
@@ -463,7 +525,7 @@ int main()
     middle(head,18);
     display(head);
     printf("%d",modular(head,2));*/
-    /*for (int i = 0; i < 5; i++)
+    /*for (int i = 0; i < 3; i++)
     {
         create2();
     }
@@ -472,8 +534,22 @@ int main()
     printf("\n");
     printf("the merged linked list in sorted order is:");
     merge_linkedlist(head, head2);
-    display(third);*/
+    display(third);
     for (int i = 0; i < 5; i++)
         create3();
+    display_circular(head);
+    delete_middle(head);
+    printf("the elements after deletion of the middle term:");
+    display(head);*/
+    for (int i = 0; i < 5; i++)
+    {
+        create3();
+    }
+    display_circular(head);
+    printf("\n");
+    printf("enter the position of the element to be deleted from the circular linkedlist:");
+    scanf("%d", &circular_pos);
+    printf("\n");
+    delete_circular(circular_pos);
     display_circular(head);
 }
