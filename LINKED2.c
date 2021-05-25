@@ -280,7 +280,7 @@ void reverse_link(struct node *p) //reversing a linkedlist without using any ano
     }
     head = q;
 }
-void rec_reverse(struct node *q, struct node *p)
+void rec_reverse(struct node *q, struct node *p)//reverse a linkedlist using recursion
 {
     if (p != NULL)
     {
@@ -401,7 +401,7 @@ void merge_linkedlist(struct node *first, struct node *second) //code to merge t
         last->next = second;
     }
 }
-void delete_middle(struct node *p)
+void delete_middle(struct node *p)//deleting an element from the middle of the linkedlist
 {
     struct node *q;
     // p=head;
@@ -423,7 +423,7 @@ void delete_middle(struct node *p)
     q->next = p->next;
     free(p);
 }
-int delete_circular(int pos)
+int delete_circular(int pos)//deleting a element in circular linkedlist
 {
     int x;
     struct node *q, *p;
