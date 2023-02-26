@@ -143,7 +143,7 @@ int binary(struct node *g, int ele) //searching an element in linkedlist
         printf("element not found");
     }
 }
-int insert(struct node *p, int pos, int extra)
+int insert(struct node *p, int pos, int extra)// this function insert a node to a existing linked list
 {
     struct node *t, *newnode;
     t = (struct node *)malloc(sizeof(struct node));
